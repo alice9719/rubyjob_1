@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ruby Jobs</h1>
+
+</br>
+<table class='table table-hover' cellspacing="0">
+  <thead>
+    <tr>
+      <th>Posted</th>
+      <th>Title</th>
+      <th>Company name</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.created_at %></td>
+        <td><%= link_to job.title ,job_path(job) %></td>
+        <td><%= job.company_name %></td>
+        <td><%= job.location %></td>
+        <td><%= link_to '刪除', job, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-warning btn-sm'  %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<br><%= link_to 'New Job', new_job_path, class:'btn btn-danger btn-sm' %>
